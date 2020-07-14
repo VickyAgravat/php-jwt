@@ -264,7 +264,9 @@ try {
 You may need to define expiration date for your token. To do so, you need to provide timestamp of expiration date into token's payload under ```exp``` key.
 
 ```
-$tokenDecoded = new TokenDecoded([], ['exp' => time() + 1000]);
+$header = ['exp' => time() + 1000];
+$payload = ['name' => 'john'];
+$tokenDecoded = new TokenDecoded($header, $payload);
 $tokenEncoded = $tokenDecoded->encode($key);
 ```
 
@@ -273,7 +275,9 @@ $tokenEncoded = $tokenDecoded->encode($key);
 You may need to define date before which your token should not be valid. To do so, you need to provide timestamp of not before date into token's payload under ```nbf``` key.
 
 ```
-$tokenDecoded = new TokenDecoded([], ['nbf' => time() + 1000]);
+$header = ['nbf' => time() + 1000];
+$payload = ['name' => 'john'];
+$tokenDecoded = new TokenDecoded($header, $payload);
 $tokenEncoded = $tokenDecoded->encode($key);
 ```
 
